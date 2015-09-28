@@ -3,6 +3,10 @@
   padding: 0;	
 }
 
+li {
+	list-style-type: none;
+}
+
 .msg-container {
   margin-top: 200px;
 }
