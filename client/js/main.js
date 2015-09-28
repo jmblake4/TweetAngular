@@ -12,6 +12,7 @@ app.controller('tweetController', ['$scope', '$http', function($scope, $http) {
 		$scope.tweets = res.data.reverse();
 	}).catch(function(err) {
 		alert('Something horrible happened!');
+		console.log(err);
 	});
 	
 	$scope.postTweet = function() {
@@ -25,7 +26,8 @@ app.controller('tweetController', ['$scope', '$http', function($scope, $http) {
 		}).then(function(res) {
 			$scope.tweets = res.data.reverse();
 		}).catch(function(err) {
-			alert('Something horrible happened!')
+			alert('Something horrible happened!');
+			console.log(err);
 		});
 	};
 
