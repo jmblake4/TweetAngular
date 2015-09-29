@@ -5,24 +5,14 @@
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
 		<link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-		<script src="components/jquery/dist/jquery.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+		<script src="components/jquery/dist/jquery.min.js"></script>
 		<script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="js/main.js"></script>
 	</head>
 	<body ng-app="TweetApp">
-		<div class="container" ng-controller="tweetController">
-			<div class="row">
-				<span>Name: </span><input type="text" ng-model="userName"/>
-			</div>
-			<div class="row">
-				<span>Tweet: </span><input type="text" ng-model="tweetText"/>
-				<button ng-click="postTweet()">Send</button>
-			</div>
-			<div id="msgContainer">
-				<ul>
-					<li ng-repeat="tweet in tweets">{{tweet.userName}}:  {{tweet.text}}</li>
-				</ul>						
-			</div>
+		<div class="main">
+			<div ng-view></div>
 		</div>
 	</body>
 </html>

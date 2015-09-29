@@ -1,9 +1,34 @@
-var app = angular.module('TweetApp', []);
+var TweetApp = angular.module('TweetApp', ['ngRoute']);
+
+TweetApp.config(['$routeProvider', function($routeProvider) {
+	$routeProvider
+
+	// route for the welcome page
+	.when('/', {
+		templateUrl : 'welcome.html',
+		controller  : 'welcomeController'
+	})
+
+	// route for the welcome page
+	.when('/welcome', {
+		templateUrl : 'welcome.html',
+		controller  : 'welcomeController'
+	})
+
+	// route for the tweets page
+	.when('/tweets', {
+		templateUrl : 'tweets.html',
+		controller  : 'tweetController'
+	});
+}]);
 
 
-app.controller('tweetController', ['$scope', '$http', function($scope, $http) {
+TweetApp.controller('tweetController', ['$scope', '$http', '$rootScope', '$window', function($scope, $http, $rootScope, $window) {
 
-	$scope.userName = 'Anonymous';
+	$scope.userName = $rootScope.userName;
+	if ( $scope.userName === '' || ! $scope.userName ) {
+		$scope.userName = 'Anonymous';
+	}
 	$scope.tweets = [];
 	var urlPath = 'http://localhost:3000/messages';
 	
@@ -16,9 +41,7 @@ app.controller('tweetController', ['$scope', '$http', function($scope, $http) {
 	});
 	
 	$scope.postTweet = function() {
-		var tweetObj = { text: $scope.tweetText,
-						userName: $scope.userName
-		};
+		var tweetObj = { text: $scope.tweetText, userName: $scope.userName };
 		$http.post(urlPath, JSON.stringify(tweetObj))
 		.then(function(res) {
 			$scope.tweetText = '';
@@ -30,5 +53,17 @@ app.controller('tweetController', ['$scope', '$http', function($scope, $http) {
 			console.log(err);
 		});
 	};
+}]);
+
+TweetApp.controller('welcomeController', ['$scope', '$http', '$rootScope', '$window', function($scope, $http, $rootScope, $window) {
+
+	$scope.setUser = function() {
+		if ( $scope.userName === ''  || ! $scope.userName ) {
+			$rootScope.userName = 'Anonymous';
+		} else {
+			$rootScope.userName = $scope.userName;
+		}
+		$window.location.href = '#tweets';
+	}
 
 }]);

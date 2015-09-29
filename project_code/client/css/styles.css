@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;	
+}
+
+li {
+	list-style-type: none;
+}
+
+.msg-container {
+  margin-top: 200px;
+}
+
+.msg {
+  margin-top: 0px;
+  padding: 10px;
+}
+
+.msg-text {
+	display: inline-block;
+}
+
+.msg-user {
+	display: inline-block;
+}
