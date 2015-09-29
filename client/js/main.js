@@ -24,7 +24,7 @@ TweetApp.controller('tweetController', ['$scope', '$http', '$rootScope', '$windo
 		$scope.userName = 'Anonymous';
 	}
 	$scope.tweets = [];
-	var urlPath = 'http://localhost:3000/messages';
+	var urlPath = 'http://10.10.104.254:3000/messages';
 	
 	$http.get(urlPath)
 	.then(function(res) {
