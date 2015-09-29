@@ -2,20 +2,14 @@ var TweetApp = angular.module('TweetApp', ['ngRoute']);
 
 TweetApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
-
-	// route for the welcome page
 	.when('/', {
 		templateUrl : 'welcome.html',
 		controller  : 'welcomeController'
 	})
-
-	// route for the welcome page
 	.when('/welcome', {
 		templateUrl : 'welcome.html',
 		controller  : 'welcomeController'
 	})
-
-	// route for the tweets page
 	.when('/tweets', {
 		templateUrl : 'tweets.html',
 		controller  : 'tweetController'
@@ -36,7 +30,6 @@ TweetApp.controller('tweetController', ['$scope', '$http', '$rootScope', '$windo
 	.then(function(res) {
 		$scope.tweets = res.data.reverse();
 	}).catch(function(err) {
-		alert('Something horrible happened!');
 		console.log(err);
 	});
 	
