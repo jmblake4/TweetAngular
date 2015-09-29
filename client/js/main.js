@@ -30,6 +30,7 @@ TweetApp.controller('tweetController', ['$scope', '$http', '$rootScope', '$windo
 	.then(function(res) {
 		$scope.tweets = res.data.reverse();
 	}).catch(function(err) {
+		alert('Something horrible happened!');
 		console.log(err);
 	});
 	
